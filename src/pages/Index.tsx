@@ -93,13 +93,16 @@ const Index = () => {
           {/* Start Button / Speed Display */}
           <div className="flex flex-col items-center justify-center mb-8">
             {status === "idle" ? (
-              <Button
-                onClick={startTest}
-                size="lg"
-                className="w-48 h-48 rounded-full bg-gradient-primary hover:shadow-glow transition-all duration-500 hover:scale-105 text-2xl font-bold"
-              >
-                <Gauge className="w-12 h-12" />
-              </Button>
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 blur-xl group-hover:opacity-70 transition-all duration-500" />
+                <Button
+                  onClick={startTest}
+                  size="lg"
+                  className="relative w-48 h-48 rounded-full bg-transparent border-4 border-transparent bg-clip-padding hover:bg-primary/5 transition-all duration-500 hover:scale-105 text-2xl font-bold before:absolute before:inset-0 before:rounded-full before:p-[4px] before:bg-gradient-primary before:-z-10 before:m-[-4px]"
+                >
+                  <Gauge className="w-12 h-12" />
+                </Button>
+              </div>
             ) : status === "complete" ? (
               <div className="text-center">
                 <div className="text-7xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-4 animate-pulse-glow">
